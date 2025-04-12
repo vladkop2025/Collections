@@ -35,6 +35,21 @@ namespace Collections
 
 
             */
+            var months = new List<string>()
+            { 
+              "Янв" "Фев" "Мар" "Апр" "Май" "Июн"
+            };
+            months add("Июл");
+            months.AddRange(new[] { "Авг" "Сен" };
+
+            months.Sort();
+            months.BinarySearch("Апр");                 //вернет индекс элемента поиска
+
+            int index = months.IndexOf("Апр");          //вернет индекс элемент 
+
+            months.Insert(1, "Test");                   //вставка элемента в индекс 1
+            var removeresult = months.Remove("Авг");    //если нашел, удаляет, иначе результат False
+            months.RemoveAt(0);                         //удаляет 1 элемент массива
         }
     }
 }
