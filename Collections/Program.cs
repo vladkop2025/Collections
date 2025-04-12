@@ -13,6 +13,12 @@ namespace CountWords
     {
         static void Main(string[] args)
         {
+
+            //Модуль 13.Основные коллекции С#
+            /*
+            13.1. Определение и виды коллекци
+            */
+
             // читаем весь файл с рабочего стола в строку текста
             string text = File.ReadAllText("C:\\Users\\vladk\\Desktop\\cdev_Text.txt");
 
