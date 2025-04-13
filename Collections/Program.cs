@@ -1,48 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StackTest
+namespace LinkedListTest
 {
     class Program
     {
-        public static Stack<string> words = new Stack<string>();
+        // объявим список в виде статической переменной
+        public static LinkedList<string> LinkedList = new LinkedList<string>();
 
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Введите слово и нажмите Enter, чтобы добавить его в стек.");
+            // Добавим несколько элементов
+            LinkedList.AddFirst("Лиса");
+            LinkedList.AddFirst("Волк");
+            LinkedList.AddFirst("Заяц");
+            var mouse = LinkedList.AddFirst("Мышь");
+
+            GoOnwards(); //   Прямой проход списка
+            GoBackwards(); // Обратный проход списка
+
+            // Вставка нового элемента
+            LinkedList.AddAfter(mouse, "Медведь");
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Выведем список ещё раз после вставки");
             Console.WriteLine();
 
-            while (true)
-            {
-                var input = Console.ReadLine();
 
-                switch (input)
-                {
-                    //   если  команда pop - пробуем достать элемент
-                    case "pop":
-                        words.TryPop(out string popResult);
-                        break;
-                    //   если  команда peek - пробуем  просмотреть элемент
-                    case "peek":
-                        words.TryPeek(out string peekResult);
-                        break;
-                    default:
-                        // если ни одна из команд не распознана - простов стек добавляем то что введено
-                        words.Push(input);
-                        break;
-                }
+            GoOnwards(); //   Прямой проход списка
+            GoBackwards(); // Обратный проход списка
+        }
 
+        static void GoOnwards()
+        {
+            LinkedListNode<string> node;
 
-                Console.WriteLine();
-                Console.WriteLine("В стеке:");
+            Console.WriteLine("Элементы коллекции в прямом направлении: ");
+            for (node = LinkedList.First; node != null; node = node.Next)
+                Console.Write(node.Value + " ");
+        }
 
-                
-                foreach (var word in words)
-                {
-                    Console.WriteLine(" " + word);
-                }
-            }
+        static void GoBackwards()
+        {
+            LinkedListNode<string> node;
+
+            Console.WriteLine("\n\nЭлементы коллекции в обратном направлении: ");
+            for (node = LinkedList.Last; node != null; node = node.Previous)
+                Console.Write(node.Value + " ");
         }
     }
 }
-
